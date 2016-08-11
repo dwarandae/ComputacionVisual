@@ -2,7 +2,7 @@ PImage img;
 PGraphics pg;
 int OFFSET = 10;
 final int SIZE = 25;
-color selected;
+color colorSelected;
 
 void setup() {
   size(1024,513);
@@ -22,12 +22,14 @@ void draw() {
   fill(0, 0, blue(c));
   rect(mouseX + OFFSET, mouseY + OFFSET*4 + SIZE*3, SIZE, SIZE);
   if(mousePressed) {
-    selected = c;
     pg.beginDraw();
-    pg.strokeWeight(10);
-    pg.stroke(selected);
+    pg.strokeWeight(5);
+    pg.stroke(colorSelected);
     pg.line(mouseX, mouseY, pmouseX, pmouseY);
     pg.endDraw();
+  }
+  else {
+    colorSelected = c;
   }
   image(pg, 0, 0);
 }
